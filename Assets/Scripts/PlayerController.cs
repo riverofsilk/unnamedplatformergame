@@ -88,30 +88,28 @@ public class PlayerController : MonoBehaviour
             rb.velocity = new Vector2(rb.velocity.x, -Time.deltaTime);
         }
         // Basic Lashing
+
         if (lashDirection.x > 0.5)
         {
             // Right
             downDirection = new Vector2(1, 0);
-            transform.up = new Vector3(-1, 0, 0);
         }
         if (lashDirection.x < -0.5)
         {
             // Left
             downDirection = new Vector2(-1, 0);
-            transform.up = new Vector3(1, 0, 0);
         }
         if (lashDirection.y > 0.5)
         {
             // Up
             downDirection = new Vector2(0, 1);
-            transform.up = new Vector3(0, -1, 0);
         }
         if (lashDirection.y < -0.5)
         {
             // Down
             downDirection = new Vector2(0, -1);
-            transform.up = new Vector3(0, 1, 0);
         }
+
         // Turning
         if (move.x < -0.5 || move.y > 0.5)
         {
@@ -123,6 +121,7 @@ public class PlayerController : MonoBehaviour
         }
         Flip(lookDirection);
         setGravity(downDirection);
+        transform.up = new Vector3(-downDirection.x, -downDirection.y, 0);
 
     }
     void Flip(int side)
