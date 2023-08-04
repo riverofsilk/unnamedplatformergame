@@ -3,24 +3,24 @@ using UnityEngine;
 
 public class OptionsMenuManager : MonoBehaviour
 {
-    private TextMeshPro lashControlText;
+    private string lashWith = "R3";
+    public GameObject lashToggleText;
     void Start()
     {
-        lashControlText = transform.GetChild(1).GetChild(0).GetComponent<TextMeshPro>();
     }
     void Update()
     {
-        lashControlText.text = $"Lash With : {Options.lashControl}";
+        lashToggleText.GetComponent<TextMeshProUGUI>().text = $"Lash With : {lashWith}";
     }
     public void toggleLashControl()
     {
-        if (Options.lashControl == "R3")
+        if (lashWith == "R3")
         {
-            Options.lashControl = "R2 + L3";
+            lashWith = "R2 + L3";
         }
         else
         {
-            Options.lashControl = "R3";
+            lashWith = "R3";
         }
     }
 }
